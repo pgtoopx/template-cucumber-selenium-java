@@ -1,4 +1,4 @@
-package util;
+package cucumber.util;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

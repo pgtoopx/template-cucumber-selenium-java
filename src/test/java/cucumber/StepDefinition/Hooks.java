@@ -1,7 +1,8 @@
-package cucumber;
+package cucumber.StepDefinition;
 
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
+import cucumber.api.java.AfterStep;
 import cucumber.api.java.Before;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.OutputType;
@@ -42,4 +43,10 @@ public class Hooks {
         driver.quit();
     }
 
+    @AfterStep
+    public void screenshot(Scenario scenario){
+        scenario.write("Current Page URL is " + driver.getCurrentUrl());
+        byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+        scenario.embed(screenshot, "image/png");
+    }
 }
