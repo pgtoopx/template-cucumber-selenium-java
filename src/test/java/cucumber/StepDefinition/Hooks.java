@@ -11,6 +11,8 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 
+import java.util.concurrent.TimeUnit;
+
 public class Hooks {
 
     public static WebDriver driver;
@@ -24,6 +26,7 @@ public class Hooks {
         this.scenario = scenario;
         WebDriverManager.chromedriver().setup();
         driver = WebDriverFactory.createWebDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         //driver = new ChromeDriver();
     }
 
