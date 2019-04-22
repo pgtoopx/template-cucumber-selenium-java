@@ -4,6 +4,8 @@ import cucumber.Hooks;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class exampleDefinition {
@@ -22,11 +24,12 @@ public class exampleDefinition {
 
     @When("i search for {string}")
     public void i_search_for(String string) {
-        // Write code here that turns the phrase above into concrete actions
+        driver.findElement(By.name("q")).sendKeys(string);
+        driver.findElement(By.name("q")).submit();
     }
 
     @Then("the tittle have to contain {string}")
     public void the_tittle_have_to_contain(String string) {
-        // Write code here that turns the phrase above into concrete actions
+        Assert.assertTrue(driver.getTitle().contains(string));
     }
 }
