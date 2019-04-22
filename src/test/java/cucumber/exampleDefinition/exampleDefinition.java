@@ -9,7 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class exampleDefinition {
-    WebDriver browser;
     private String URL_GOOGLE = "http://www.google.com";
     private WebDriver driver;
 
