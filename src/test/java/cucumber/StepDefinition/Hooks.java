@@ -4,6 +4,7 @@ import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.AfterStep;
 import cucumber.api.java.Before;
+import cucumber.util.WebDriverFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -23,7 +24,8 @@ public class Hooks {
     public void openBrowser(Scenario scenario){
         this.scenario = scenario;
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        driver = WebDriverFactory.createWebDriver();
+        //driver = new ChromeDriver();
     }
 
     @After
