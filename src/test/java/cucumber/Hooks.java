@@ -13,12 +13,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Hooks {
 
     public static WebDriver driver;
+    public Scenario scenario;
     @Before
     /**
      * Delete all cookies at the start of each scenario to avoid
      * shared state between tests
      */
-    public void openBrowser(){
+    public void openBrowser(Scenario scenario){
+        this.scenario = scenario;
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
     }
