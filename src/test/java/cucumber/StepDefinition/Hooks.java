@@ -11,6 +11,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 
+import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
 public class Hooks {
@@ -22,7 +23,7 @@ public class Hooks {
      * Delete all cookies at the start of each scenario to avoid
      * shared state between tests
      */
-    public void openBrowser(Scenario scenario){
+    public void openBrowser(Scenario scenario) throws MalformedURLException {
         this.scenario = scenario;
         WebDriverManager.chromedriver().setup();
         driver = WebDriverFactory.createWebDriver();
@@ -37,7 +38,7 @@ public class Hooks {
     public void tearDown(Scenario scenario){
         if(scenario.isFailed()) {
             try {
-                scenario.write("Current Page URL is " + driver.getCurrentUrl());
+                //scenario.write("Current Page URL is " + driver.getCurrentUrl());
                 byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
                 scenario.embed(screenshot, "image/png");
             } catch (WebDriverException somePlatformsDontSupportScreenshots) {
@@ -49,7 +50,7 @@ public class Hooks {
 
     @AfterStep
     public void screenshot(Scenario scenario){
-        scenario.write("Current Page URL is " + driver.getCurrentUrl());
+        //scenario.write("Current Page URL is " + driver.getCurrentUrl());
         byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
         scenario.embed(screenshot, "image/png");
     }
