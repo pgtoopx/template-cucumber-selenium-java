@@ -10,7 +10,6 @@ public class LoginPage extends BasePage {
 
     public LoginPage (WebDriver driver){
         super(driver);
-        PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath="//*[@text='SALTAR']")

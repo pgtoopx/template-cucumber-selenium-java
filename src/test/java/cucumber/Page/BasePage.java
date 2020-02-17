@@ -1,10 +1,10 @@
 package cucumber.Page;
 
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import static java.util.concurrent.TimeUnit.*;
@@ -14,7 +14,6 @@ import static org.awaitility.Awaitility.*;
 public class BasePage {
 
     private static final int WAIT_TIMEOUT = 30;
-    private static final int DEFAULT_TIMEOUT = 1;
     private static final int POLLING = 100;
     protected Logger log = LogManager.getLogger(this.getClass());
 
@@ -24,19 +23,19 @@ public class BasePage {
     protected BasePage(WebDriver driver){
         this.driver=driver;
         this.wait= new WebDriverWait(driver, WAIT_TIMEOUT, POLLING);
-        PageFactory.initElements(new AjaxElementLocatorFactory(driver,DEFAULT_TIMEOUT), this);
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
     protected BasePage(WebDriver driver, int timeOutSec){
         this.driver=driver;
         this.wait= new WebDriverWait(driver, timeOutSec, POLLING);
-        PageFactory.initElements(new AjaxElementLocatorFactory(driver,DEFAULT_TIMEOUT), this);
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
     protected BasePage(WebDriver driver, int timeOutSec, int pollingSec){
         this.driver=driver;
         this.wait= new WebDriverWait(driver, timeOutSec, pollingSec);
-        PageFactory.initElements(new AjaxElementLocatorFactory(driver,DEFAULT_TIMEOUT), this);
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
     protected WebDriver getDriver(){
