@@ -18,17 +18,11 @@ public class Hooks {
 
     public static WebDriver driver;
     public Scenario scenario;
+
     @Before
-    /**
-     * Delete all cookies at the start of each scenario to avoid
-     * shared state between tests
-     */
     public void openBrowser(Scenario scenario) throws MalformedURLException {
         this.scenario = scenario;
-        WebDriverManager.chromedriver().setup();
         driver = WebDriverFactory.createWebDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //driver = new ChromeDriver();
     }
 
     @After
@@ -38,7 +32,6 @@ public class Hooks {
     public void tearDown(Scenario scenario){
         if(scenario.isFailed()) {
             try {
-                //scenario.write("Current Page URL is " + driver.getCurrentUrl());
                 byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
                 scenario.embed(screenshot, "image/png");
             } catch (WebDriverException somePlatformsDontSupportScreenshots) {
@@ -50,8 +43,11 @@ public class Hooks {
 
     @AfterStep
     public void screenshot(Scenario scenario){
-        //scenario.write("Current Page URL is " + driver.getCurrentUrl());
-        byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-        scenario.embed(screenshot, "image/png");
+        try {
+            byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+            scenario.embed(screenshot, "image/png");
+        } catch (WebDriverException somePlatformsDontSupportScreenshots) {
+            System.err.println(somePlatformsDontSupportScreenshots.getMessage());
+        }
     }
 }
