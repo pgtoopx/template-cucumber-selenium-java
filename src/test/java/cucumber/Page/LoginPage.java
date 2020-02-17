@@ -1,6 +1,9 @@
 package cucumber.Page;
 
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.android.AndroidMobileCommandHelper;
+import io.appium.java_client.android.AndroidTouchAction;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

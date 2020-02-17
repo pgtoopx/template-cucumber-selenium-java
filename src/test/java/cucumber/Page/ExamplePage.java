@@ -22,7 +22,7 @@ public class ExamplePage extends BasePage {
 
 
     public void setInputQ(String qText){
-        waitForElementToBeVisible(inputQ);
+        waitForElementToAppear(inputQ);
         inputQ.sendKeys(qText);
     }
 
