@@ -8,5 +8,5 @@ Feature: Login MiPago
     And  Hago Logout de la aplicacion
 
     Examples:
-      | usuario     | clave       |
+      | rut     | clave       |
       | "92131092"  | "Banco001"  |
