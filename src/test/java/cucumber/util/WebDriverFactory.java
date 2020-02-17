@@ -20,7 +20,7 @@ import java.net.URL;
 public class WebDriverFactory {
     //private String PATH_SAFARI_DRIVER = "/usr/bin/safaridriver";
     public static WebDriver createWebDriver() throws MalformedURLException {
-        String webdriver = System.getProperty("browser", "chrome");
+        String webdriver = System.getProperty("browser", "mobile");
         switch(webdriver) {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
