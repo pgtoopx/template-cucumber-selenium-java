@@ -23,15 +23,12 @@ public class LoginDef {
 
     @When("Salto el proceso de bienvenida")
     public void saltoElProcesoDeBienvenida() throws InterruptedException {
-        //assertTrue("No se visualiza boton SALTAR de bienvenida", MiPagoMainTest.loginPage.BtnSaltar());
-        Thread.sleep(2000);
         loginPage.ClickBtnSaltar();
         Thread.sleep(2000);
     }
 
     @And("Ingreso mi usuario {string} y clave {string}")
     public void ingresoMiUsuarioUsuarioYClaveClave(String usuario, String clave) throws InterruptedException {
-        //assertTrue("No se visualiza boton SALTAR de bienvenida", loginPage.BtnSaltar());
         loginPage.SetUser3(usuario);
         Thread.sleep(3000);
         //Utils.pausa(1, this.getClass());
