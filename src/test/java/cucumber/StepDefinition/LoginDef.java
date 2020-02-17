@@ -27,27 +27,9 @@ public class LoginDef {
         Thread.sleep(2000);
     }
 
-    @And("Ingreso mi usuario {string} y clave {string}")
-    public void ingresoMiUsuarioUsuarioYClaveClave(String usuario, String clave) throws InterruptedException {
-        loginPage.SetUser3(usuario);
-        Thread.sleep(3000);
-        //Utils.pausa(1, this.getClass());
-        //MiPagoMainTest.loginPage.SetUser1(usuario);
-        //Utils.pausa(1, this.getClass());
-        //MiPagoMainTest.loginPage.SetUser2(usuario);
-        //Utils.pausa(1, this.getClass());
-        //MiPagoMainTest.loginPage.SetUser3(usuario);
-        //Utils.pausa(1, this.getClass());
-
-        loginPage.SetContrasena(clave);
-        Thread.sleep(2000);
-    }
-
-    @And("Hago clic en boton INICIAR")
-    public void hagoClicEnBotonINICIAR() throws InterruptedException {
-        Thread.sleep(2000);
-        loginPage.ClickBtnIniciar();
-        Thread.sleep(2000);
+    @And("Ingreso mi rut {string} y clave {string}")
+    public void ingresoMiUsuarioUsuarioYClaveClave(String rut, String clave) throws InterruptedException {
+        loginPage.iniciarSesion(rut, clave);
     }
 
     @Then("Hago Login en la aplicacion MiPago")

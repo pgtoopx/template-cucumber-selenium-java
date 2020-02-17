@@ -24,7 +24,7 @@ public class LoginPage extends BasePage {
     private MobileElement btnSaltar;
 
     @FindBy(xpath="//*[contains(@contentDescription, 'Ingresar RUT')]")
-    private MobileElement inputRut4;
+    private MobileElement inputRut;
 
     @FindBy(xpath="//*[@content-desc='Ingresar Clave internet')]")
     private MobileElement inputPassword;
@@ -32,15 +32,18 @@ public class LoginPage extends BasePage {
     @FindBy(xpath="//*[@text='INICIAR']")
     private MobileElement btnIniciar;
 
-
-    public void     SetUser3(String usuario) { inputRut4.sendKeys(usuario); }
-    public void     SetContrasena(String contrasena) {
-        inputPassword.sendKeys(contrasena);
-    }
-    public void     ClickBtnIniciar() { btnIniciar.click(); }
     public void     ClickBtnSaltar() {
         waitUntilElementIsVisible(btnSaltar);
         btnSaltar.click();
+    }
+
+    public void iniciarSesion(String rut, String password){
+        waitUntilElementIsVisible(inputRut);
+        inputRut.setValue(rut);
+        waitUntilElementIsVisible(inputPassword);
+        inputRut.setValue(password);
+        waitUntilElementIsVisible(btnIniciar);
+        btnIniciar.click();
     }
 
 }
