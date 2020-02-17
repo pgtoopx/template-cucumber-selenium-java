@@ -1,13 +1,7 @@
 package cucumber.util;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.service.local.AppiumDriverLocalService;
-import io.appium.java_client.service.local.AppiumServiceBuilder;
-import io.appium.java_client.service.local.flags.GeneralServerFlag;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,7 +12,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class WebDriverFactory {
-    //private String PATH_SAFARI_DRIVER = "/usr/bin/safaridriver";
     public static WebDriver createWebDriver() throws MalformedURLException {
         String webdriver = System.getProperty("browser", "browserstack");
         String browserstackLocal = System.getProperty("browserstack.local", "false");
@@ -53,6 +46,9 @@ public class WebDriverFactory {
                 caps.setCapability("browserstack.networkLogs",true);
                 caps.setCapability("browserstack.video",true);
                 caps.setCapability("browserstack.video.disableWaterMark",true);
+                //configuracion del dispositivo
+                caps.setCapability("unicodeKeyboard", true);
+                caps.setCapability("resetKeyboard", true);
                 return new AndroidDriver<AndroidElement>(new URL(urlBrowserStack), caps);
             default:
                 throw new RuntimeException("Unsupported webdriver: " + webdriver);

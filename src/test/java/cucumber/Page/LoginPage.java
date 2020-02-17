@@ -1,6 +1,8 @@
 package cucumber.Page;
 
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -12,16 +14,16 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    @FindBy(xpath="//*[@text='SALTAR']")
+    @AndroidFindBy(xpath="//*[@text='SALTAR']")
     private MobileElement btnSaltar;
 
-    @FindBy(className="Ingresar RUT")
+    @AndroidFindBy(accessibility="Ingresar RUT")
     private MobileElement inputRut;
 
-    @FindBy(xpath="//*[@content-desc='Ingresar Clave internet')]")
+    @AndroidFindBy(accessibility="Ingresar Clave internet")
     private MobileElement inputPassword;
 
-    @FindBy(xpath="//*[@text='INICIAR']")
+    @AndroidFindBy(xpath="//*[@text='INICIAR']")
     private MobileElement btnIniciar;
 
     public void ClickBtnSaltar() {
@@ -29,12 +31,11 @@ public class LoginPage extends BasePage {
         btnSaltar.click();
     }
 
-    public void iniciarSesion(String rut, String password){
+    public void iniciarSesion(String rut, String password) throws InterruptedException {
         waitUntilElementIsVisible(inputRut);
         inputRut.setValue(rut);
         waitUntilElementIsVisible(inputPassword);
-        inputRut.setValue(password);
-        waitUntilElementIsVisible(btnIniciar);
+        inputPassword.setValue(password);
         btnIniciar.click();
     }
 
