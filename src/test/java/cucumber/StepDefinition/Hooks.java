@@ -44,8 +44,8 @@ public class Hooks {
     @AfterStep
     public void screenshot(Scenario scenario){
         try {
-            byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-            scenario.embed(screenshot, "image/png");
+            //byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+            //scenario.embed(screenshot, "image/png");
         } catch (WebDriverException somePlatformsDontSupportScreenshots) {
             System.err.println(somePlatformsDontSupportScreenshots.getMessage());
         }

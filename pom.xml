@@ -10,8 +10,20 @@
     <packaging>jar</packaging>
 
     <properties>
-        <cucumber.version>4.2.6</cucumber.version>
+        <project.java.version>1.8</project.java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <cucumber.version>4.6.0</cucumber.version>
+        <junit.version>4.12</junit.version>
+        <selenium.version>4.0.0-alpha-2</selenium.version>
+
+        <support.version>0.0.9</support.version>
+        <pageobjects.version>0.0.7</pageobjects.version>
+        <browserfactory.version>0.0.10</browserfactory.version>
+        <scenariocontext.version>0.0.5</scenariocontext.version>
     </properties>
 
     <dependencies>
@@ -42,14 +54,14 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
+            <version>${selenium.version}</version>
         </dependency>
 
         <dependency>
@@ -57,7 +69,6 @@
             <artifactId>webdrivermanager</artifactId>
             <version>3.4.0</version>
         </dependency>
-
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>

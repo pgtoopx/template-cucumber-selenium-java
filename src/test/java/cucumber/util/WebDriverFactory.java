@@ -21,6 +21,7 @@ public class WebDriverFactory {
     //private String PATH_SAFARI_DRIVER = "/usr/bin/safaridriver";
     public static WebDriver createWebDriver() throws MalformedURLException {
         String webdriver = System.getProperty("browser", "mobile");
+        String browserstackLocal = System.getProperty("browserstack.local", "false");
         switch(webdriver) {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
@@ -48,7 +49,7 @@ public class WebDriverFactory {
                 caps.setCapability("browserstack.appiumLogs",true);
                 caps.setCapability("browserstack.debug",true);
                 caps.setCapability("browserstack.deviceLogs",true);
-                caps.setCapability("browserstack.local",false);
+                caps.setCapability("browserstack.local",browserstackLocal);
                 caps.setCapability("browserstack.networkLogs",true);
                 caps.setCapability("browserstack.video",true);
                 caps.setCapability("browserstack.video.disableWaterMark",true);

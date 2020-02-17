@@ -7,14 +7,15 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
 
-import static org.junit.Assert.assertTrue;
 
 public class LoginDef {
-    //String urlSitio = "";
     private WebDriver driver;
     LoginPage loginPage;
 
-    public LoginDef(){ driver= Hooks.driver; }
+    public LoginDef(){
+        this.driver= Hooks.driver;
+        loginPage = new LoginPage(driver);
+    }
 
     @Given("Soy Usuario de la aplicacion MiPago")
     public void soyUsuarioDeLaAplicacionMiPago() throws InterruptedException {

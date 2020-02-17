@@ -1,22 +1,15 @@
 package cucumber.Page;
 
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.android.AndroidMobileCommandHelper;
-import io.appium.java_client.android.AndroidTouchAction;
-import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends BasePage {
-    WebDriver driver;
+
 
     public LoginPage (WebDriver driver){
         super(driver);
-        this.driver= driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -32,7 +25,7 @@ public class LoginPage extends BasePage {
     @FindBy(xpath="//*[@text='INICIAR']")
     private MobileElement btnIniciar;
 
-    public void     ClickBtnSaltar() {
+    public void ClickBtnSaltar() {
         waitUntilElementIsVisible(btnSaltar);
         btnSaltar.click();
     }
