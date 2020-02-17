@@ -20,7 +20,7 @@ import java.net.URL;
 public class WebDriverFactory {
     //private String PATH_SAFARI_DRIVER = "/usr/bin/safaridriver";
     public static WebDriver createWebDriver() throws MalformedURLException {
-        String webdriver = System.getProperty("browser", "mobile");
+        String webdriver = System.getProperty("browser", "browserstack");
         String browserstackLocal = System.getProperty("browserstack.local", "false");
         switch(webdriver) {
             case "firefox":
@@ -33,7 +33,7 @@ public class WebDriverFactory {
                 //TODO: implement SafariDriver to factory
                 //return new SafariDriver();
                 //throw new RuntimeException("Unsupported webdriver: " + webdriver);
-            case "mobile":
+            case "browserstack":
                 String userName = "ceavilaj1";
                 String accessKey = "DETgaorNKhbyqm6yyKwU";
                 String urlBrowserStack = String.format("https://%s:%s@hub-cloud.browserstack.com/wd/hub",

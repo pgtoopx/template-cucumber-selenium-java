@@ -15,7 +15,7 @@ public class LoginPage extends BasePage {
     @FindBy(xpath="//*[@text='SALTAR']")
     private MobileElement btnSaltar;
 
-    @FindBy(xpath="//*[contains(@contentDescription, 'Ingresar RUT')]")
+    @FindBy(className="Ingresar RUT")
     private MobileElement inputRut;
 
     @FindBy(xpath="//*[@content-desc='Ingresar Clave internet')]")

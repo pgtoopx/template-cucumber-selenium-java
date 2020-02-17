@@ -78,11 +78,11 @@ public class BasePage {
     }
 
     public void waitUntilElementIsVisible(WebElement element){
-        await().atMost(60, SECONDS).until(()->isVisible(element));
+        await().atMost(WAIT_TIMEOUT, SECONDS).until(()->isVisible(element));
     }
 
     public void waitUntilElementIsInVisible(WebElement element){
-        await().atMost(60, SECONDS).until(()->isInvisible(element));
+        await().atMost(WAIT_TIMEOUT, SECONDS).until(()->isInvisible(element));
     }
 
 

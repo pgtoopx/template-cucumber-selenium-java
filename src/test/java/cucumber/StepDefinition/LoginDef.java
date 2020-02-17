@@ -19,13 +19,11 @@ public class LoginDef {
 
     @Given("Soy Usuario de la aplicacion MiPago")
     public void soyUsuarioDeLaAplicacionMiPago() throws InterruptedException {
-        Thread.sleep(2000);
     }
 
     @When("Salto el proceso de bienvenida")
     public void saltoElProcesoDeBienvenida() throws InterruptedException {
         loginPage.ClickBtnSaltar();
-        Thread.sleep(2000);
     }
 
     @And("Ingreso mi rut {string} y clave {string}")
