@@ -1,26 +1,24 @@
 pipeline {
-  agent {
-    docker {
-      image 'markhobson/maven-chrome'
-    }
-
-  }
+  agent none
   stages {
-    stage('Clean Work Space'){
-        steps {
-            sh 'mvn clean'
-            }
-         }
     stage('Integration Test') {
+      agent {
+        docker {
+          image 'markhobson/maven-chrome'
+        }
+
+      }
       steps {
         sh 'mvn test'
       }
     }
+
   }
   post {
     always {
       archiveArtifacts(artifacts: 'target/', fingerprint: true)
       junit 'target/cucumber.xml'
     }
+
   }
 }
