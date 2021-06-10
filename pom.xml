@@ -47,6 +47,20 @@
             <artifactId>webdrivermanager</artifactId>
             <version>3.4.0</version>
         </dependency>
+        
+		<dependency>
+			<groupId>com.zebrunner</groupId>
+			<artifactId>agent-junit</artifactId>
+			<version>1.2.0</version>
+			<scope>test</scope>
+		</dependency>
+		
+	    <dependency>
+	        <groupId>net.bytebuddy</groupId>
+	        <artifactId>byte-buddy</artifactId>
+	        <version>1.10.18</version>
+	        <scope>test</scope>
+	    </dependency>
 
     </dependencies>
 
@@ -62,6 +76,41 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            
+		    <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-dependency-plugin</artifactId>
+		        <version>3.1.2</version>
+		        <executions>
+		            <execution>
+		                <id>copy</id>
+		                <phase>initialize</phase>
+		                <goals>
+		                    <goal>copy</goal>
+		                </goals>
+		            </execution>
+		        </executions>
+		        <configuration>
+		            <artifactItems>
+		                <artifactItem>
+		                    <groupId>com.zebrunner</groupId>
+		                    <artifactId>agent-junit</artifactId>
+		                    <version>RELEASE</version>
+		                    <outputDirectory>${project.build.directory}/agent</outputDirectory>
+		                    <destFileName>zebrunner-junit-agent.jar</destFileName>
+		                </artifactItem>
+		            </artifactItems>
+		        </configuration>
+		    </plugin>
+		    <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-surefire-plugin</artifactId>
+		        <version>3.0.0-M4</version>
+		        <configuration>
+		            <argLine>-javaagent:${project.build.directory}/agent/zebrunner-junit-agent.jar</argLine>
+		        </configuration>
+		    </plugin>
+            
         </plugins>
     </build>
 </project>
